@@ -14,15 +14,16 @@ https://www.acmicpc.net/problem/10810
 
 n, m= map(int, input().split())
 bag=[0]*n #개수
-what=[0]*n #종류
+
 for i in range(m):
     a,b,c=map(int, input().split())
     for k in range(a-1,b):
-        if what[k]==0:
-            bag[k]+=1
-            what[k]=c
-        elif what[k]!=c:
-            bag[k]=1
-            what[k]=c
-        
+        bag[k]=c
+    
+
+for i in bag:
+    print(i ,end=" ")
+
+# *bag → 리스트를 하나씩 풀어서 출력
+# print(*bag) 가능
 
