@@ -78,17 +78,19 @@
 bufferreader 유형
 
 ```java
-import java.io.BufferReader;
-import java.io.InputStreamReader;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
-public class Main{
-		public static void main(String[] args) throws IOException{
-				//입력
-				BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-				
-				//출력은
-				System.out.println(count);
+public class Solution {
+	public static void main(String args[]) throws IOException {
+    	//시간, 메모리의 효율을 높일 수 있음
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        String s = st.nextToken();
+    }
+}
 ```
 이때
 println : 자동으로 줄바꿈
