@@ -11,3 +11,8 @@ print(list1)
 list1.reverse() # 리스트 자체를 뒤집고 저장
 print(list1)
 # [5, 4, 3, 2, 1]
+
+
+strip(제거할 것)
+strip() # 공백 제거 
+원래 변수의 값을 바꾸지 않고 리턴만 함 
