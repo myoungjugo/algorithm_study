@@ -20,4 +20,48 @@ inline int reverseNum(int n){
 
 공백 탭 개행만 0 반환, 나머지는 0이 아닌 숫자 반환
 
-isspace(ch)
+```cpp
+if(isspace(ch)) 
+            word = false;
+```
+
+
+### cpp 위한 시간 절약 팁
+```cpp
+#include <iostream>
+using namespace std;
+
+
+//main함수 안에
+//시간절약용
+ios::sync_with_stdio(false);
+	cin.tie(NULL);
+
+```
+- ios::sync_with_stdio(false);
+기본적으로 C++의 cin/cout은 C의 stdin/stdout과 동기화(sync) 되어 있음.
+
+동기화의 장점: scanf, printf와 cin, cout을 섞어서 써도 입출력 순서가 보장됨.
+
+동기화의 단점: 동기화를 유지하기 위해 별도의 시스템 버퍼를 거쳐야 하므로 속도가 굉장히 느려짐.
+
+사용 효과: 이 설정을 false로 바꾸면 C++만의 독립적인 버퍼를 사용하게 되어 입출력 속도가 매우 빨라짐.
+
+주의: 이 코드를 쓴 후에는 printf, scanf를 절대 섞어 쓰면 안 됨! 출력 순서가 꼬일 수 있기에.
+
+cin.tie(NULL);
+기본적으로 cin과 cout은 묶여(tie) 있음.
+
+묶여 있다는 의미: cin으로 입력을 받기 전에, 혹시 출력 버퍼에 남아있을지 모를 내용을 보여주기 위해 자동으로 cout의 버퍼를 flush.
+
+PS에서의 문제: 알고리즘 문제는 입력과 출력이 동시에 화면에 보일 필요가 없음. 입력을 다 받고 나중에 한꺼번에 출력해도 상관없기에 매번 입력을 받을 때마다 출력 버퍼를 비우면 시간이 낭비됨.
+
+사용 효과: cin.tie(NULL)은 이 연결을 끊어버림. 덕분에 불필요한 버퍼 비우기 과정이 생략되어 속도가 빨라진다.
+
+###추가
+
+줄을 바꿀 때 endl은 개행문자를 출력하고 출력버퍼를 비움. 
+
+출력 버퍼를 계속 비울 필요는 없기 때문에 시간 단축을 위해 ‘\n’을 쓰자
+  
+
