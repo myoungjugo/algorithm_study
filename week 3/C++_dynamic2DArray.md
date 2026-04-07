@@ -1,0 +1,58 @@
+### 1. C++에서 2차원 배열 동적 할당하는 법
+
+가장 표준적인 방법은 **포인터의 포인터**를 사용하는 방식.
+
+C++
+
+```sql
+int** createArray(int n, int m) {
+    // 1. 행(Row) 개수만큼 포인터 배열 할당
+    int** arr = new int*[n]; 
+    
+    for (int i = 0; i < n; i++) {
+        // 2. 각 행에 열(Column) 개수만큼 메모리 할당
+        arr[i] = new int[m]; 
+    }
+    return arr;
+}
+```
+
+> **주의사항:** `new`로 할당했다면 프로그램 종료 전이나 배열 사용이 끝난 후 반드시 `delete`로 메모리를 해제해야 함
+> 
+
+---
+
+### 2. 리턴 타입 어떻게 해야 하는지
+
+리턴 타입은 내가 어떤 자료형을 저장하느냐에 따라 달라짐.
+
+- **`int`형 배열일 때:** `int**`
+- **`char`형 배열일 때:** `char**`
+- **`long long`형 배열일 때:** `long long**`
+
+즉, **(자료형) + 별 두 개(`**`)**를 붙인 형태가 리턴 타입이 됨.
+
+---
+
+### 3. 필요한 라이브러리
+
+- **기본 방식 (`new`, `delete`):** 별도의 라이브러리가 필요 없음. `iostream`만 있어도 충분.
+- **추천 방식 (`vector`):** 사실 백준 같은 알고리즘 문제 풀이에서는 메모리 해제가 번거로운 포인터 방식보다 **`std::vector`** 사용을 추천함.
+
+### **🔥 백준 추천: vector를 이용한 2차원 배열**
+
+`vector`를 쓰면 메모리 해제를 직접 안 해도 되고, 리턴 타입도 깔끔하다!
+
+C++
+
+```sql
+#include <vector>
+using namespace std;
+
+// 리턴 타입: vector<vector<int>>
+vector<vector<int>> createVectorArray(int n, int m) {
+    // n행 m열을 0으로 초기화하며 생성
+    vector<vector<int>> arr(n, vector<int>(m, 0));
+    return arr;
+}
+```
