@@ -69,3 +69,51 @@ int arr2[100][100];
 - 포인터를 넘기거나
 - struct 써야 함
 그러나 코드가 복잡해지므로 정적 배열 쓸 때는 보통 main에서 다 처리함
+
+
+
+### 초기화하기 ###
+1. 정적 배열 (전역 변수 활용)
+함수 밖(전역 공간)에 배열을 선언하면 컴파일러가 알아서 모든 값을 0 (bool의 경우 false)으로 초기화해 줌.
+
+C++
+bool visited[101][101]; // 전역에 선언하면 자동으로 모두 false
+
+int main() {
+    // 이미 모두 false인 상태.
+}
+만약 함수 내부(지역 변수)에서 선언한다면 아래와 같이 빈 중괄호를 붙여주면 됨.
+
+C++
+bool visited[101][101] = {false, }; // 전체 false 초기화
+2. std::vector 사용 시
+vector는 생성자에서 크기와 초기값을 한 번에 지정할 수 있어 매우 강력.
+
+C++
+// n행 m열을 모두 false로 초기화
+vector<vector<bool>> visited(n, vector<bool>(m, false));
+3. memset 함수 활용 (속도가 매우 빠름)
+동적 할당(new)을 했거나, 이미 값이 들어있는 배열을 중간에 한꺼번에 false로 밀어버리고 싶을 때 사용합니다. <cstring> 헤더가 필요.
+
+C++
+#include <cstring> // memset 사용을 위해 필요
+
+// 2차원 동적 배열일 경우 각 행마다 초기화
+for (int i = 0; i < n; i++) {
+    memset(arr[i], false, sizeof(bool) * m);
+}
+
+// 정적 배열(전역/지역)일 경우 한 번에 초기화 가능
+memset(visited, false, sizeof(visited));
+주의: memset은 메모리 바이트 단위로 초기화하기 때문에 0(false)이나 -1 이외의 값으로 초기화할 때는 조심해야 하지만, false로 채울 때는 가장 빠른 성능을 보여줌.
+
+4. std::fill 함수 활용 (가장 안전함)
+memset보다 조금 느릴 수 있지만, 모든 자료형에 대해 안전하고 직관적. <algorithm> 헤더를 사용.
+
+C++
+#include <algorithm>
+
+// 2차원 배열 visited를 false로 채우기
+for (int i = 0; i < n; i++) {
+    fill(visited[i], visited[i] + m, false);
+}
