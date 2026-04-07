@@ -5,7 +5,6 @@ int main() {
 	int n, m;
 	cin >> n >> m;
 
-  //2차원 배열 할당
 	int** a = new int* [n];
 	int** b = new int* [n];
 	int** c = new int* [n];
@@ -45,10 +44,21 @@ int main() {
 		cout << "\n";
 	}
 
-  //메모리 누수 방지 위해서 delete해주기
-	delete a;
-	delete b;
-	delete c;
+	//메모리 해제
+	for (int i = 0; i < n; i++) {
+		delete[] a[i];   //각 행 삭제
+	}
+	delete[] a;   //행 주소 배열 삭제
+	
+	for (int i = 0; i < n; i++) {
+		delete[] b[i];
+	}
+	delete[] b;   
+
+	for (int i = 0; i < n; i++) {
+		delete[] c[i];
+	}
+	delete[] c;
 
 	return 0;
 }
