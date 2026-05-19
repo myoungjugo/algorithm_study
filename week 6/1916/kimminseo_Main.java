@@ -4,7 +4,7 @@ package org.codeup;
 import java.util.Scanner;
 
 public class Main {
-    // 1. N은 최대 200이므로 201 크기의 static 배열을 선언합니다.
+    // N은 최대 200 ->  201 크기의 static 배열 선언
     // 자바가 알아서 모든 칸을 0으로 초기화해줌
     static int[] memo = new int[201];
 
@@ -25,7 +25,7 @@ public class Main {
             return 1;
         }
 
-        // 2. 이미 계산한 적이 있는 값이면 (0이 아니라면) 저장된 값을 바로 반환!
+        // 2. 이미 계산한 적이 있는 값이면 (0이 아니라면) 저장된 값을 바로 반환
         if (memo[n] != 0) {
             return memo[n];
         }
