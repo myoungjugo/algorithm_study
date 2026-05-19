@@ -26,7 +26,7 @@ int main(){
 	max_length = ubs(a);
 	min_idx = a;
 	for(int i = a+1; i <= b; i++){
-		cur_length = ubs(i);
+		cur_length = ubs(i); //최댓값 갱신하며 재귀함수 두 번 계산하는 일 막기 위해 현재값 변수 적용
 		if(cur_length > max_length){
 			max_length = cur_length;
 			min_idx = i;
