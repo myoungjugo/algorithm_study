@@ -1,8 +1,7 @@
 #include <iostream>
 using namespace std;
-typedef unsigned long long Long;
 
-Long ubs(Long n, Long length=1){ //시작하는 수 포함해서 길이로 치므로 1로 초기화
+int ubs(unsigned long long n, int length=1){ //시작하는 수 포함해서 길이로 치므로 1로 초기화
 	if(n == 1)
 		return length;
 	
@@ -22,8 +21,7 @@ int main(){
     cin.tie(NULL);
 	
 	
-	int a,b, count, min_idx;
-	Long cur_length, max_length; //길이가 가장 긴 우박수 저장
+	int a,b, count, min_idx, cur_length, max_length; 
 	cin >> a >> b;
 	max_length = ubs(a);
 	min_idx = a;
