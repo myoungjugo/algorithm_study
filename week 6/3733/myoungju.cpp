@@ -2,7 +2,7 @@
 using namespace std;
 typedef unsigned long long Long;
 
-Long ubs(Long n, Long length=1){
+Long ubs(Long n, Long length=1){ //시작하는 수 포함해서 길이로 치므로 1로 초기화
 	if(n == 1)
 		return length;
 	
